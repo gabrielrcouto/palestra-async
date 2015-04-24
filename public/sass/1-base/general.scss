@@ -1,0 +1,246 @@
+/******************** Elements ********************/
+
+/******************** Classes ********************/
+
+.reveal {
+	section {
+		img {
+			border: none;
+			@include box-shadow(none);
+		}
+	}
+}
+
+/*********************************************
+ * QUESTIONS
+ *********************************************/
+
+.questions {
+	background: rgba(255,255,255,0.9);
+	bottom: 0;
+	left: 0;
+	position: absolute;
+	right: 0;
+	text-align: center;
+	top: 0;
+	z-index: 99;
+
+	.button {
+		span {
+			font-size: 30px;
+		}
+	}
+
+	input[type="text"] {
+		font-size: 20px;
+		max-width: 400px;
+		padding: 0.8em;
+		width: 80%;
+	}
+
+	.messages {
+		font-size: 20px;
+		height: 100%;
+		overflow: scroll;
+		width: 100%;
+
+		.message {
+			border-bottom: 1px solid #c0c0c0;
+			margin-bottom: 10px;
+			padding: 10px;
+		}
+	}
+}
+
+/*********************************************
+ * NICKNAME
+ *********************************************/
+
+.nickname {
+	background: rgba(255,255,255,0.9);
+	bottom: 0;
+	left: 0;
+	position: absolute;
+	right: 0;
+	text-align: center;
+	top: 0;
+	z-index: 99;
+
+	.button {
+		span {
+			font-size: 50px;
+		}
+	}
+
+	input[type="text"] {
+		font-size: 20px;
+		max-width: 400px;
+		padding: 0.8em;
+		width: 80%;
+	}
+
+	.message {
+		font-size: 30px;
+	}
+}
+
+/*********************************************
+ * BUTTON!
+ *********************************************/
+
+.button {
+	position:relative;
+	display:inline-block;
+	margin:20px;
+
+	-moz-user-select: none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	user-select: none;
+
+	span {
+		color:#ffffff !important;
+		font-family:Helvetica, sans-serif;
+		font-weight:bold;
+		font-size:90px;
+		text-align: center;
+		text-decoration:none;
+		background-color:#FFA12B;
+		display:block;
+		position:relative;
+		padding:40px 80px;
+
+		-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+		text-shadow: 0px 1px 0px #000;
+		filter: dropshadow(color=#000, offx=0px, offy=1px);
+
+		-webkit-box-shadow:inset 0 1px 0 #FFE5C4, 0 10px 0 #915100;
+		-moz-box-shadow:inset 0 1px 0 #FFE5C4, 0 10px 0 #915100;
+		box-shadow:inset 0 1px 0 #FFE5C4, 0 10px 0 #915100;
+
+		-webkit-border-radius: 5px;
+		-moz-border-radius: 5px;
+		border-radius: 5px;
+	}
+
+	span:active {
+		top:10px;
+		background-color:#F78900;
+
+		-webkit-box-shadow:inset 0 1px 0 #FFE5C4, inset 0 -3px 0 #915100;
+		-moz-box-shadow:inset 0 1px 0 #FFE5C4, inset 0 -3pxpx 0 #915100;
+		box-shadow:inset 0 1px 0 #FFE5C4, inset 0 -3px 0 #915100;
+	}
+}
+
+.button:after {
+	content:"";
+	height:100%;
+	width:100%;
+	padding:4px;
+	position: absolute;
+	bottom:-15px;
+	left:-4px;
+	z-index:-1;
+	background-color:#2B1800;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+/*********************************************
+ * BUTTON LEVEL
+ *********************************************/
+
+.button-level {
+	background-color:#FFA12B;
+	position:relative;
+	display:block;
+	margin: 20px !important;
+
+	-moz-user-select: none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	user-select: none;
+
+	.level {
+		bottom: 0;
+		height: 0%;
+		left: 0;
+		position: absolute;
+		right: 0;
+
+		z-index: 1;
+	}
+
+	.level.blue {
+		background: #3498db;
+	}
+
+	.level.green {
+		background: #27ae60;
+	}
+
+	.level.red {
+		background: #e74c3c;
+	}
+
+	.level.yellow {
+		background: #f1c40f;
+	}
+
+	span {
+		color:#ffffff !important;
+		font-family:Helvetica, sans-serif;
+		font-weight:bold;
+		font-size:90%;
+		text-align: center;
+		text-decoration:none;
+		
+		display:block;
+		position:relative;
+		padding:40px 80px;
+
+		-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+		text-shadow: 0px 1px 0px #000;
+		filter: dropshadow(color=#000, offx=0px, offy=1px);
+
+		-webkit-box-shadow:inset 0 1px 0 #FFE5C4, 0 10px 0 #915100;
+		-moz-box-shadow:inset 0 1px 0 #FFE5C4, 0 10px 0 #915100;
+		box-shadow:inset 0 1px 0 #FFE5C4, 0 10px 0 #915100;
+
+		-webkit-border-radius: 5px;
+		-moz-border-radius: 5px;
+		border-radius: 5px;
+
+		z-index: 99;
+	}
+
+	span:active {
+		top:10px;
+		background-color:#F78900;
+
+		-webkit-box-shadow:inset 0 1px 0 #FFE5C4, inset 0 -3px 0 #915100;
+		-moz-box-shadow:inset 0 1px 0 #FFE5C4, inset 0 -3pxpx 0 #915100;
+		box-shadow:inset 0 1px 0 #FFE5C4, inset 0 -3px 0 #915100;
+	}
+}
+
+.button-level:after {
+	content:"";
+	height:100%;
+	width:100%;
+	padding:4px;
+	position: absolute;
+	bottom:-15px;
+	left:-4px;
+	z-index:-1;
+	background-color:#2B1800;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+/******************** Ids ********************/
+
+/******************** Media Queries ********************/
