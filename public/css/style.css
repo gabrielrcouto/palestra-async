@@ -65,66 +65,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 
 /*********************************************
- * QUESTIONS
- *********************************************/
-.questions {
-  background: rgba(255, 255, 255, 0.9);
-  bottom: 0;
-  left: 0;
-  position: absolute;
-  right: 0;
-  text-align: center;
-  top: 0;
-  z-index: 99;
-}
-.questions .button span {
-  font-size: 30px;
-}
-.questions input[type="text"] {
-  font-size: 20px;
-  max-width: 400px;
-  padding: 0.8em;
-  width: 80%;
-}
-.questions .messages {
-  font-size: 20px;
-  height: 100%;
-  overflow: scroll;
-  width: 100%;
-}
-.questions .messages .message {
-  border-bottom: 1px solid #c0c0c0;
-  margin-bottom: 10px;
-  padding: 10px;
-}
-
-/*********************************************
- * NICKNAME
- *********************************************/
-.nickname {
-  background: rgba(255, 255, 255, 0.9);
-  bottom: 0;
-  left: 0;
-  position: absolute;
-  right: 0;
-  text-align: center;
-  top: 0;
-  z-index: 99;
-}
-.nickname .button span {
-  font-size: 50px;
-}
-.nickname input[type="text"] {
-  font-size: 20px;
-  max-width: 400px;
-  padding: 0.8em;
-  width: 80%;
-}
-.nickname .message {
-  font-size: 30px;
-}
-
-/*********************************************
  * BUTTON!
  *********************************************/
 .button {
@@ -255,6 +195,96 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
+}
+
+/*********************************************
+ * CHAT
+ *********************************************/
+.chat-slide {
+  background: rgba(255, 255, 255, 0.9);
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 0;
+  z-index: 99;
+}
+.chat-slide .button {
+  display: block;
+}
+.chat-slide .button span {
+  font-size: 30px;
+}
+.chat-slide input[type="text"] {
+  font-size: 20px;
+  margin-bottom: 5px;
+  padding: 0.8em 0;
+  width: 100%;
+}
+.chat-slide .messages {
+  background: #eee;
+  font-size: 20px;
+  height: 40%;
+  overflow: scroll;
+  width: 100%;
+}
+.chat-slide .messages p {
+  color: #8e44ad;
+  margin: 2px 0;
+  padding: 5px;
+  text-align: left;
+}
+.chat-slide .messages p.me {
+  color: #000000;
+}
+
+/*********************************************
+ * COUNTER
+ *********************************************/
+div.users-counter {
+  position: fixed;
+  right: 10px;
+  top: 10px;
+}
+
+/*********************************************
+ * JEQUITI
+ *********************************************/
+div.jequiti-background {
+  background: url(../images/jequiti.jpg) no-repeat center center #ffffff;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 999999;
+}
+
+/*********************************************
+ * NICKNAME
+ *********************************************/
+.nickname {
+  background: rgba(255, 255, 255, 0.9);
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 0;
+  z-index: 99;
+}
+.nickname .button span {
+  font-size: 50px;
+}
+.nickname input[type="text"] {
+  font-size: 20px;
+  max-width: 400px;
+  padding: 0.8em;
+  width: 80%;
+}
+.nickname .message {
+  font-size: 30px;
 }
 
 /******************** Ids ********************/

@@ -33,14 +33,22 @@ class SlidesServerCommand extends Command {
     {
         echo 'Iniciando servidor...' . PHP_EOL;
 
+        $controller = new Controller();
+
         $server = IoServer::factory(
             new HttpServer(
                 new WsServer(
-                    new Controller()
+                    $controller
                 )
             ),
             777
         );
+
+        $loop = $server->loop;
+
+        $loop->addPeriodicTimer(5, function () use ($controller) {
+            $controller->sendCounterMessage();
+        });
 
         $server->run();
     }

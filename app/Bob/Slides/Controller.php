@@ -1,6 +1,7 @@
 <?php
 namespace App\Bob\Slides;
 
+use App\Bob\Slides\Messages\CounterMessage;
 use App\Bob\Slides\Messages\MessageManager;
 use App\Bob\Slides\Messages\SlideMessage;
 use App\Bob\Slides\Messages\PingMessage;
@@ -85,6 +86,8 @@ class Controller implements MessageComponentInterface
             Sender::send(Controller::$lastMessage, $connection);
         }
 
+        $this->sendCounterMessage();
+
         $cache = \Cache::get($connection->session);
 
         Log::d('Espectador ' . $cache['nickname'] . ' conectado: ' . $connection->resourceId);
@@ -154,6 +157,8 @@ class Controller implements MessageComponentInterface
         //A conexão foi encerrada, remove do storage
         self::$connections->detach($connection);
 
+        $this->sendCounterMessage();
+
         Log::d('Conexão ' . $cache['nickname'] . ' encerrada: ' . $connection->resourceId);
         Log::d(count(self::$connections) . ' conectados');
     }
@@ -169,5 +174,15 @@ class Controller implements MessageComponentInterface
         $connection->close();
 
         Log::d('Ocorreu um erro: '. $e->getMessage());
+    }
+
+    public function sendCounterMessage()
+    {
+        $message = new CounterMessage(null);
+        $message->number = count(self::$connections);
+
+        foreach (self::$connections as $anotherConnection) {
+            Sender::send($message, $anotherConnection);
+        }
     }
 }

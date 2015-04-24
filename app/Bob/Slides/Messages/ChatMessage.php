@@ -4,10 +4,10 @@ namespace App\Bob\Slides\Messages;
 /**
  * Mensagem de questão
  */
-class QuestionMessage extends Message
+class ChatMessage extends Message
 {
-    public $type = 'question';
-    public $question;
+    public $type = 'chat';
+    public $message;
     public $nickname;
 
     public function __construct($data, $connection)
@@ -16,7 +16,7 @@ class QuestionMessage extends Message
 
         $cache = \Cache::get($connection->session);
 
-        $this->question = $data->question;
+        $this->message = strip_tags($data->message);
         $this->nickname = $cache['nickname'];
     }
 }

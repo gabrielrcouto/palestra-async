@@ -9,6 +9,7 @@ Modules.poll = {
 			if (!$(poll).hasClass('votado')) {
 				ratchet.emit('poll', {number: $(poll).attr('data-number'), value: $(this).attr('data-value')});
 				$(poll).addClass('votado');
+				Modules.sound.horn();
 			}
 		});
 

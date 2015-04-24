@@ -39,6 +39,9 @@
 	<body data-websockets-address="<?php echo $websocketsAddress; ?>" data-mode="<?php echo $mode; ?>">
 
 		<div class="reveal">
+            <div class="jequiti-background" style="display:none;"></div>
+
+            <div class="users-counter"></div>
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
@@ -55,16 +58,26 @@
                 <?php
                     else :
                 ?>
-                <section>
-                    <h1>Boa, você está conectado!</h1>
-                    <h2>Agora é só esperar o show começar...</h2>
-                    <h4>Aumente o volume!</h4>
+                <section class="chat-slide">
+                    <h2>Trolls Gate</h2>
+
+                    <div class="messages"></div>
+
+                    <p><input type="text" placeholder="Digite aqui uma mensagem" name="message" /></p>
+
+                    <div class="button">
+                        <span>ENVIAR</span>
+                    </div>
+
+                    <div class="ajax" style="display:none;">
+                        <img src="images/ajax-loader.gif" width="24" height="24">
+                    </div>
                 </section>
                 <?php
                     endif;
                 ?>
 
-				<section>
+				<section class="sound-comecar">
 					<h1><img src="images/react.png">  <img src="images/ratchet.png"></h1>
 					<h1>async e websockets com PHP</h1>
 				</section>
@@ -109,7 +122,7 @@ return view('resultado', ['usuarios' => $usuarios]);
 					</code></pre>
 				</section>
 
-				<section class="poll" data-number="1">
+				<section class="poll sound-suspense02" data-number="1">
                     <p>Você faz isso?</p>
 
                     <div class="button-level" data-value="sim">
@@ -199,7 +212,7 @@ Usuarios.find({
 					<p><img src="images/fork.png"></p>
 				</section>
 
-				<section class="poll" data-number="3">
+				<section class="poll sound-qualresposta" data-number="3">
                     <p>O que um fork faz?</p>
 
                     <div class="button-level" data-value="1">
@@ -218,7 +231,7 @@ Usuarios.find({
                     </div>
                 </section>
 
-				<section>
+				<section class="jequiti">
 					<pre><code class="php" data-trim>
 $pid = pcntl_fork();
 
@@ -551,11 +564,20 @@ class SlideMessage extends Message
                     <img src="images/fluxograma-servidores-2.png" width="500" height="512"/>
                 </section>
 
-                <section>
-                    <h2>Cabooooo! É Tetra! É Tetra!</h2>
+                <section class="sound-tchau">
+                    <h2>Tchau pessoal, até a próxima!</h2>
+                    <p><a href="https://joind.in/talk/view/14360" target="_blank">Avalie minha palestra! CLIQUE AQUI</a></p>
                     <p><a href="https://twitter.com/gabrielrcouto" target="_blank">@gabrielrcouto</a></p>
                     <h3><a href="http://phpsp.org.br/" target="_blank">PHPSP</a></h3>
                     <h3><a href="https://www.facebook.com/groups/grupo.campinas/" target="_blank">PHPSP Campinas</a></h3>
+                </section>
+
+                <section>
+                    <h2 class="horn counter">0 / 0</h2>
+
+                    <div class="horn button">
+                        <span>Buzinar</span>
+                    </div>
                 </section>
 			</div>
 
@@ -564,6 +586,7 @@ class SlideMessage extends Message
 		<script src="js/plugins/jquery.min.js"></script>
 		<script src="lib/js/head.min.js"></script>
 		<script src="js/plugins/reveal.js"></script>
+        <script src="js/plugins/soundjs-0.6.0.combined.js"></script>
 
 		<script>
             var mode = $('body').attr('data-mode');

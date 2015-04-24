@@ -12,79 +12,6 @@
 }
 
 /*********************************************
- * QUESTIONS
- *********************************************/
-
-.questions {
-	background: rgba(255,255,255,0.9);
-	bottom: 0;
-	left: 0;
-	position: absolute;
-	right: 0;
-	text-align: center;
-	top: 0;
-	z-index: 99;
-
-	.button {
-		span {
-			font-size: 30px;
-		}
-	}
-
-	input[type="text"] {
-		font-size: 20px;
-		max-width: 400px;
-		padding: 0.8em;
-		width: 80%;
-	}
-
-	.messages {
-		font-size: 20px;
-		height: 100%;
-		overflow: scroll;
-		width: 100%;
-
-		.message {
-			border-bottom: 1px solid #c0c0c0;
-			margin-bottom: 10px;
-			padding: 10px;
-		}
-	}
-}
-
-/*********************************************
- * NICKNAME
- *********************************************/
-
-.nickname {
-	background: rgba(255,255,255,0.9);
-	bottom: 0;
-	left: 0;
-	position: absolute;
-	right: 0;
-	text-align: center;
-	top: 0;
-	z-index: 99;
-
-	.button {
-		span {
-			font-size: 50px;
-		}
-	}
-
-	input[type="text"] {
-		font-size: 20px;
-		max-width: 400px;
-		padding: 0.8em;
-		width: 80%;
-	}
-
-	.message {
-		font-size: 30px;
-	}
-}
-
-/*********************************************
  * BUTTON!
  *********************************************/
 
@@ -239,6 +166,111 @@
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
+}
+
+/*********************************************
+ * CHAT
+ *********************************************/
+
+.chat-slide {
+	background: rgba(255,255,255,0.9);
+	bottom: 0;
+	left: 0;
+	position: absolute;
+	right: 0;
+	text-align: center;
+	top: 0;
+	z-index: 99;
+
+	.button {
+		display: block;
+
+		span {
+			font-size: 30px;
+		}
+	}
+
+	input[type="text"] {
+		font-size: 20px;
+		margin-bottom: 5px;
+		padding: 0.8em 0;
+		width: 100%;
+	}
+
+	.messages {
+		background: #eee;
+		font-size: 20px;
+		height: 40%;
+		overflow: scroll;
+		width: 100%;
+
+		p {
+			color: #8e44ad;
+			margin: 2px 0;
+			padding: 5px;
+			text-align: left;
+		}
+
+		p.me {
+			color: #000000;
+		}
+	}
+}
+
+/*********************************************
+ * COUNTER
+ *********************************************/
+
+div.users-counter {
+	position: fixed;
+	right: 10px;
+	top: 10px;
+}
+
+/*********************************************
+ * JEQUITI
+ *********************************************/
+
+div.jequiti-background {
+	background: url(../images/jequiti.jpg) no-repeat center center #ffffff;
+	bottom: 0;
+	left: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+	z-index: 999999;
+}
+
+/*********************************************
+ * NICKNAME
+ *********************************************/
+
+.nickname {
+	background: rgba(255,255,255,0.9);
+	bottom: 0;
+	left: 0;
+	position: absolute;
+	right: 0;
+	text-align: center;
+	top: 0;
+	z-index: 99;
+
+	.button {
+		span {
+			font-size: 50px;
+		}
+	}
+
+	input[type="text"] {
+		font-size: 20px;
+		max-width: 400px;
+		padding: 0.8em;
+		width: 80%;
+	}
+
+	.message {
+		font-size: 30px;
+	}
 }
 
 /******************** Ids ********************/

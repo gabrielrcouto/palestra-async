@@ -26,8 +26,8 @@ class MessageManager
             return new PollMessage($obj, $connection);
         } else if ($obj->type == 'ping') {
             return new PingMessage($obj, $connection);
-        } else if ($obj->type == 'question') {
-            return new QuestionMessage($obj, $connection);
+        } else if ($obj->type == 'chat') {
+            return new ChatMessage($obj, $connection);
         } else {
             return new Message($obj, $connection);
         }
