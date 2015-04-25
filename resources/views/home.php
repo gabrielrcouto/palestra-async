@@ -11,6 +11,7 @@
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="mobile-web-app-capable" content="yes">
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
@@ -38,6 +39,22 @@
 
 	<body data-websockets-address="<?php echo $websocketsAddress; ?>" data-mode="<?php echo $mode; ?>">
 
+    <div class="chat" style="display:none">
+            <h2>Trolls Gate</h2>
+
+            <div class="messages"></div>
+
+            <p><input type="text" placeholder="Digite aqui uma mensagem" name="message" /></p>
+
+            <div class="button">
+                <span>ENVIAR</span>
+            </div>
+
+            <div class="ajax" style="display:none;">
+                <img src="images/ajax-loader.gif" width="24" height="24">
+            </div>
+        </div>
+
 		<div class="reveal">
             <div class="jequiti-background" style="display:none;"></div>
 
@@ -59,19 +76,7 @@
                     else :
                 ?>
                 <section class="chat-slide">
-                    <h2>Trolls Gate</h2>
 
-                    <div class="messages"></div>
-
-                    <p><input type="text" placeholder="Digite aqui uma mensagem" name="message" /></p>
-
-                    <div class="button">
-                        <span>ENVIAR</span>
-                    </div>
-
-                    <div class="ajax" style="display:none;">
-                        <img src="images/ajax-loader.gif" width="24" height="24">
-                    </div>
                 </section>
                 <?php
                     endif;
@@ -477,7 +482,31 @@ $loop->run();
                 </section>
 
                 <section>
-                    <pre><code data-trim style="font-size: 18px; margin-top: 20px;">
+                    <h2>Servidor</h2>
+                    <pre><code class="php" data-trim>
+$controller = new Controller();
+
+$server = IoServer::factory(
+    new HttpServer(
+        new WsServer(
+            $controller
+        )
+    ),
+    777
+);
+
+$loop = $server->loop;
+
+$loop->addPeriodicTimer(5, function () use ($controller) {
+    $controller->sendCounterMessage();
+});
+
+$server->run();
+                    </code></pre>
+                </section>
+
+                <section>
+                    <pre><code class="php" data-trim>
 use Ratchet\MessageComponentInterface;
 use Ratchet\ConnectionInterface;
 
@@ -494,7 +523,7 @@ class App implements MessageComponentInterface
                 </section>
 
                 <section>
-                    <pre><code data-trim style="font-size: 18px; margin-top: 20px;">
+                    <pre><code class="php" data-trim>
 public function onOpen(ConnectionInterface $connection)
 {
     self::$connections->attach($connection);
@@ -509,7 +538,7 @@ public function onOpen(ConnectionInterface $connection)
                 </section>
 
                 <section>
-                    <pre><code data-trim style="font-size: 18px; margin-top: 20px;">
+                    <pre><code class="php" data-trim>
 
 public function onMessage(ConnectionInterface $connection, $message)
 {
@@ -570,6 +599,7 @@ class SlideMessage extends Message
                     <p><a href="https://twitter.com/gabrielrcouto" target="_blank">@gabrielrcouto</a></p>
                     <h3><a href="http://phpsp.org.br/" target="_blank">PHPSP</a></h3>
                     <h3><a href="https://www.facebook.com/groups/grupo.campinas/" target="_blank">PHPSP Campinas</a></h3>
+                    <p><a href="https://github.com/gabrielrcouto/palestra-async" target="_blank">Essa palestra está no GitHub</a></p>
                 </section>
 
                 <section>
@@ -595,11 +625,13 @@ class SlideMessage extends Message
             var revealConfig = {
                 controls: false,
                 progress: true,
-                history: true,
+                history: false,
                 keyboard: false,
                 overview: false,
                 touch: false,
                 center: true,
+                autoSlideStoppable: false,
+                help: false,
 
                 transition: 'slide', // none/fade/slide/convex/concave/zoom
 

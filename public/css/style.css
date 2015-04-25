@@ -56,6 +56,10 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 
 /******************** Elements ********************/
+body {
+  font-family: 'Lato', sans-serif;
+}
+
 /******************** Classes ********************/
 .reveal section img {
   border: none;
@@ -200,7 +204,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 /*********************************************
  * CHAT
  *********************************************/
-.chat-slide {
+div.chat {
   background: rgba(255, 255, 255, 0.9);
   bottom: 0;
   left: 0;
@@ -210,32 +214,36 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   top: 0;
   z-index: 99;
 }
-.chat-slide .button {
+div.chat .button {
   display: block;
 }
-.chat-slide .button span {
+div.chat .button span {
   font-size: 30px;
 }
-.chat-slide input[type="text"] {
+div.chat h2 {
+  font-size: 20px;
+  padding: 10px;
+}
+div.chat input[type="text"] {
   font-size: 20px;
   margin-bottom: 5px;
   padding: 0.8em 0;
   width: 100%;
 }
-.chat-slide .messages {
+div.chat .messages {
   background: #eee;
   font-size: 20px;
   height: 40%;
   overflow: scroll;
   width: 100%;
 }
-.chat-slide .messages p {
+div.chat .messages p {
   color: #8e44ad;
   margin: 2px 0;
   padding: 5px;
   text-align: left;
 }
-.chat-slide .messages p.me {
+div.chat .messages p.me {
   color: #000000;
 }
 
