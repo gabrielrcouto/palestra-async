@@ -38,10 +38,16 @@ $app->get('/', function() use ($app) {
         ]);
     }
 
+    //Caso seja rodado no localhost:8000, por exemplo
+    //retira os : do nome do servidor
+    $host = $_SERVER['HTTP_HOST'];
+    $hostExplode = explode(':', $host);
+    $host = $hostExplode[0];
+
     $data = [
         'host' => $_SERVER['HTTP_HOST'],
         'mode' => $mode,
-        'websocketsAddress' => $_SERVER['HTTP_HOST'] . ':777?session=' . $md5
+        'websocketsAddress' => $host . ':777?session=' . $md5
     ];
 
     return view('home', $data);

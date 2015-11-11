@@ -6,6 +6,19 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Symfony\\Component\\Yaml\\' => array($vendorDir . '/symfony/yaml'),
+    'Symfony\\Component\\VarDumper\\' => array($vendorDir . '/symfony/var-dumper'),
+    'Symfony\\Component\\Translation\\' => array($vendorDir . '/symfony/translation'),
+    'Symfony\\Component\\Security\\Core\\' => array($vendorDir . '/symfony/security-core'),
+    'Symfony\\Component\\Routing\\' => array($vendorDir . '/symfony/routing'),
+    'Symfony\\Component\\Process\\' => array($vendorDir . '/symfony/process'),
+    'Symfony\\Component\\HttpKernel\\' => array($vendorDir . '/symfony/http-kernel'),
+    'Symfony\\Component\\HttpFoundation\\' => array($vendorDir . '/symfony/http-foundation'),
+    'Symfony\\Component\\Finder\\' => array($vendorDir . '/symfony/finder'),
+    'Symfony\\Component\\EventDispatcher\\' => array($vendorDir . '/symfony/event-dispatcher'),
+    'Symfony\\Component\\DomCrawler\\' => array($vendorDir . '/symfony/dom-crawler'),
+    'Symfony\\Component\\Debug\\' => array($vendorDir . '/symfony/debug'),
+    'Symfony\\Component\\Console\\' => array($vendorDir . '/symfony/console'),
     'Stringy\\' => array($vendorDir . '/danielstjules/stringy/src'),
     'React\\Stream\\' => array($vendorDir . '/react/stream/src'),
     'React\\Socket\\' => array($vendorDir . '/react/socket/src'),
@@ -17,7 +30,6 @@ return array(
     'React\\ChildProcess\\' => array($vendorDir . '/react/child-process'),
     'React\\Cache\\' => array($vendorDir . '/react/cache'),
     'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),
-    'League\\Flysystem\\' => array($vendorDir . '/league/flysystem/src'),
     'Laravel\\Lumen\\' => array($vendorDir . '/laravel/lumen-framework/src'),
     'Illuminate\\View\\' => array($vendorDir . '/illuminate/view'),
     'Illuminate\\Validation\\' => array($vendorDir . '/illuminate/validation'),
@@ -40,7 +52,10 @@ return array(
     'Illuminate\\Config\\' => array($vendorDir . '/illuminate/config'),
     'Illuminate\\Cache\\' => array($vendorDir . '/illuminate/cache'),
     'Illuminate\\Bus\\' => array($vendorDir . '/illuminate/bus'),
+    'Illuminate\\Broadcasting\\' => array($vendorDir . '/illuminate/broadcasting'),
     'Illuminate\\Auth\\' => array($vendorDir . '/illuminate/auth'),
     'FastRoute\\' => array($vendorDir . '/nikic/fast-route/src'),
+    'Doctrine\\Instantiator\\' => array($vendorDir . '/doctrine/instantiator/src/Doctrine/Instantiator'),
+    'Carbon\\' => array($vendorDir . '/nesbot/carbon/src/Carbon'),
     'App\\' => array($baseDir . '/app'),
 );

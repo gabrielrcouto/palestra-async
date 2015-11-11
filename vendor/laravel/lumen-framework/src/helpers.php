@@ -15,7 +15,7 @@ if (! function_exists('abort')) {
      * @throws \Symfony\Component\HttpKernel\Exception\HttpException
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
-    function abort($code, $message = '', array $headers = array())
+    function abort($code, $message = '', array $headers = [])
     {
         return app()->abort($code, $message, $headers);
     }
@@ -60,7 +60,7 @@ if (! function_exists('bcrypt')) {
      * @param  array   $options
      * @return string
      */
-    function bcrypt($value, $options = array())
+    function bcrypt($value, $options = [])
     {
         return app('hash')->make($value, $options);
     }
@@ -129,7 +129,20 @@ if (! function_exists('csrf_token')) {
         if (isset($session)) {
             return $session->getToken();
         }
-        throw new RuntimeException("Application session store not set.");
+        throw new RuntimeException('Application session store not set.');
+    }
+}
+
+if (! function_exists('database_path')) {
+    /**
+     * Get the path to the database directory of the install.
+     *
+     * @param  string  $path
+     * @return string
+     */
+    function database_path($path = '')
+    {
+        return app()->databasePath().($path ? '/'.$path : $path);
     }
 }
 
@@ -184,9 +197,34 @@ if (! function_exists('event')) {
      * @param  bool    $halt
      * @return array|null
      */
-    function event($event, $payload = array(), $halt = false)
+    function event($event, $payload = [], $halt = false)
     {
         return app('events')->fire($event, $payload, $halt);
+    }
+}
+
+if (! function_exists('factory')) {
+    /**
+     * Create a model factory builder for a given class, name, and amount.
+     *
+     * @param  dynamic  class|class,name|class,amount|class,name,amount
+     * @return \Illuminate\Database\Eloquent\FactoryBuilder
+     */
+    function factory()
+    {
+        app('db');
+
+        $factory = app('Illuminate\Database\Eloquent\Factory');
+
+        $arguments = func_get_args();
+
+        if (isset($arguments[1]) && is_string($arguments[1])) {
+            return $factory->of($arguments[0], $arguments[1])->times(isset($arguments[2]) ? $arguments[2] : 1);
+        } elseif (isset($arguments[1])) {
+            return $factory->of($arguments[0])->times($arguments[1]);
+        } else {
+            return $factory->of($arguments[0]);
+        }
     }
 }
 
@@ -198,7 +236,7 @@ if (! function_exists('info')) {
      * @param  array   $context
      * @return void
      */
-    function info($message, $context = array())
+    function info($message, $context = [])
     {
         return app('Psr\Log\LoggerInterface')->info($message, $context);
     }
@@ -228,9 +266,9 @@ if (! function_exists('redirect')) {
      * @param  bool    $secure
      * @return \Laravel\Lumen\Http\Redirector|\Illuminate\Http\RedirectResponse
      */
-    function redirect($to = null, $status = 302, $headers = array(), $secure = null)
+    function redirect($to = null, $status = 302, $headers = [], $secure = null)
     {
-        $redirector = new Laravel\Lumen\Http\Redirector(Container::getInstance()->make('app'));
+        $redirector = new Laravel\Lumen\Http\Redirector(app());
 
         if (is_null($to)) {
             return $redirector;
@@ -249,9 +287,9 @@ if (! function_exists('response')) {
      * @param  array   $headers
      * @return \Symfony\Component\HttpFoundation\Response|\Laravel\Lumen\Http\ResponseFactory
      */
-    function response($content = '', $status = 200, array $headers = array())
+    function response($content = '', $status = 200, array $headers = [])
     {
-        $factory = new Laravel\Lumen\Http\ResponseFactory(Container::getInstance()->make('app'));
+        $factory = new Laravel\Lumen\Http\ResponseFactory;
 
         if (func_num_args() === 0) {
             return $factory;
@@ -269,7 +307,7 @@ if (! function_exists('route')) {
      * @param  array   $parameters
      * @return string
      */
-    function route($name, $parameters = array())
+    function route($name, $parameters = [])
     {
         return (new Laravel\Lumen\Routing\UrlGenerator(app()))
                 ->route($name, $parameters);
@@ -288,13 +326,16 @@ if (! function_exists('session')) {
      */
     function session($key = null, $default = null)
     {
+        $session = app('session');
+
         if (is_null($key)) {
-            return Container::getInstance()->make('session');
+            return $session;
         }
         if (is_array($key)) {
-            return Container::getInstance()->make('session')->put($key);
+            return $session->put($key);
         }
-        return Container::getInstance()->make('session')->get($key, $default);
+
+        return $session->get($key, $default);
     }
 }
 
@@ -321,7 +362,7 @@ if (! function_exists('trans')) {
      * @param  string  $locale
      * @return string
      */
-    function trans($id = null, $parameters = array(), $domain = 'messages', $locale = null)
+    function trans($id = null, $parameters = [], $domain = 'messages', $locale = null)
     {
         if (is_null($id)) {
             return app('translator');
@@ -342,7 +383,7 @@ if (! function_exists('trans_choice')) {
      * @param  string  $locale
      * @return string
      */
-    function trans_choice($id, $number, array $parameters = array(), $domain = 'messages', $locale = null)
+    function trans_choice($id, $number, array $parameters = [], $domain = 'messages', $locale = null)
     {
         return app('translator')->transChoice($id, $number, $parameters, $domain, $locale);
     }
@@ -357,7 +398,7 @@ if (! function_exists('url')) {
      * @param  bool    $secure
      * @return string
      */
-    function url($path = null, $parameters = array(), $secure = null)
+    function url($path = null, $parameters = [], $secure = null)
     {
         return (new Laravel\Lumen\Routing\UrlGenerator(app()))
                                 ->to($path, $parameters, $secure);
@@ -373,13 +414,14 @@ if (! function_exists('view')) {
      * @param  array   $mergeData
      * @return \Illuminate\View\View
      */
-    function view($view = null, $data = array(), $mergeData = array())
+    function view($view = null, $data = [], $mergeData = [])
     {
-        $factory = Container::getInstance()->make('view');
+        $factory = app('view');
 
         if (func_num_args() === 0) {
             return $factory;
         }
+
         return $factory->make($view, $data, $mergeData);
     }
 }

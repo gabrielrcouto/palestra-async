@@ -1,10 +1,10 @@
-<?php namespace Laravel\Lumen\Routing;
+<?php
 
-use Illuminate\Http\Request;
+namespace Laravel\Lumen\Routing;
 
 abstract class Controller
 {
-    use DispatchesCommands, ValidatesRequests;
+    use DispatchesJobs, ValidatesRequests;
 
     /**
      * The middleware defined on the controller.
@@ -20,7 +20,7 @@ abstract class Controller
      * @param  array  $options
      * @return void
      */
-    public function middleware($middleware, array $options = array())
+    public function middleware($middleware, array $options = [])
     {
         $this->middleware[$middleware] = $options;
     }
@@ -28,11 +28,10 @@ abstract class Controller
     /**
      * Get the middleware for a given method.
      *
-     * @param  Request  $request
      * @param  string  $method
      * @return array
      */
-    public function getMiddlewareForMethod(Request $request, $method)
+    public function getMiddlewareForMethod($method)
     {
         $middleware = [];
 

@@ -45,6 +45,8 @@ $connector->create('www.google.com', 80)->then(function (React\Stream\Stream $st
     $stream->write('...');
     $stream->close();
 });
+
+$loop->run();
 ```
 
 ### Async SSL/TLS connections
@@ -61,4 +63,21 @@ $secureConnector->create('www.google.com', 443)->then(function (React\Stream\Str
     $stream->write("GET / HTTP/1.0\r\nHost: www.google.com\r\n\r\n");
     ...
 });
+
+$loop->run();
+```
+
+### Unix domain sockets
+
+Similarly, the `UnixConnector` class can be used to connect to Unix domain socket (UDS)
+paths like this:
+
+```php
+$connector = new React\SocketClient\UnixConnector($loop);
+
+$connector->create('/tmp/demo.sock')->then(function (React\Stream\Stream $stream) {
+    $stream->write("HELLO\n");
+});
+
+$loop->run();
 ```

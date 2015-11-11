@@ -10,19 +10,18 @@
 /**
  * Translation messages.  See http://symfony.com/doc/current/book/translation.html
  * for possible formats.
- *
  */
 /**
  * Extracted from https://github.com/jenssegers/laravel-date/blob/master/src/lang/ro/date.php
  */
 return array(
     'year'      => 'un an|:count ani|:count ani',
-    'month'     => 'o luna|:count luni|:count luni',
-    'week'      => 'o saptamana|:count saptamani|:count saptamani',
+    'month'     => 'o lună|:count luni|:count luni',
+    'week'      => 'o săptămână|:count săptămâni|:count săptămâni',
     'day'       => 'o zi|:count zile|:count zile',
-    'hour'      => 'o ora|:count ore|:count ore',
+    'hour'      => 'o oră|:count ore|:count ore',
     'minute'    => 'un minut|:count minute|:count minute',
-    'second'    => 'o secunda|:count secunde|:count secunde',
+    'second'    => 'o secundă|:count secunde|:count secunde',
     'ago'       => 'acum :time',
     'from_now'  => ':time de acum',
     'after'     => 'peste :time',
