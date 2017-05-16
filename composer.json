@@ -5,16 +5,19 @@
     "license": "MIT",
     "type": "project",
     "require": {
-        "laravel/lumen-framework": "5.1.*",
-        "vlucas/phpdotenv": "~1.0"
+
+        "vlucas/phpdotenv": "~2.2",
+        "laravel/lumen-framework": "^5.4",
+        "react/mysql": "^0.2.0",
+        "jbroadway/urlify": "^1.1",
+        "react/child-process": "^0.4.3",
+        "cboden/ratchet": "^0.3.6"
     },
     "require-dev": {
-        "phpunit/phpunit": "~4.0",
-        "fzaninotto/faker": "1.4.0",
-        "jbroadway/urlify": "1.0.4-stable",
-        "react/mysql": "0.2.0",
-        "react/child-process": "0.4.0",
-        "cboden/ratchet": "0.3.2"
+        "fzaninotto/faker": "~1.4",
+        "phpunit/phpunit": "~5.0",
+        "mockery/mockery": "~0.9"
+
     },
     "autoload": {
         "psr-4": {
